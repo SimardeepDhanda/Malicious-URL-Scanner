@@ -136,6 +136,16 @@ app.post("/scan", async (req, res) => {
   }
 });
 
+// Catch-all for unmatched routes
+app.use((req, res) => {
+  res.status(404).json({
+    error: {
+      code: "NOT_FOUND",
+      message: "Endpoint not found. Available endpoints: POST /scan, GET /health",
+    },
+  });
+});
+
 // Export for Vercel serverless
 export default app;
 

@@ -2,25 +2,10 @@
   "version": 2,
   "buildCommand": "",
   "installCommand": "cd backend && npm install",
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": "backend/**"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/scan",
-      "dest": "/api/index.ts",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/health",
-      "dest": "/api/index.ts",
-      "methods": ["GET"]
+      "source": "/(.*)",
+      "destination": "/api/index.ts"
     }
   ]
 }
