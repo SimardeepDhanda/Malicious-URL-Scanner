@@ -147,5 +147,6 @@ app.use((req, res) => {
 });
 
 // Export for Vercel serverless
+// Vercel automatically handles Express apps when exported as default
 export default app;
 
