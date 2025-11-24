@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/api/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/scan",
+      "dest": "backend/api/index.ts",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/health",
+      "dest": "backend/api/index.ts",
+      "methods": ["GET"]
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
+

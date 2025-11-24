@@ -22,7 +22,7 @@ A lightweight security tool that analyzes user-provided URLs and returns a risk 
 
 ### Backend
 - **Runtime**: Node.js with Express
-- **LLM**: Groq API (Llama 3.1 70B)
+- **LLM**: Groq API (Llama 3.1 8B Instant)
 - **Rate Limiting**: 30 requests per hour per IP
 - **Type Safety**: TypeScript throughout
 
@@ -211,6 +211,31 @@ Malicious-URL-Scanner/
 - Batch scanning from CSV upload
 - Passive DNS and WHOIS lookup
 - Fine-tuned small model for faster analysis
+
+## Deployment
+
+This project is configured for deployment with:
+- **Frontend**: GitHub Pages (via GitHub Actions)
+- **Backend**: Vercel (serverless functions)
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Deploy
+
+**Backend (Vercel)**:
+```bash
+npm i -g vercel
+vercel login
+vercel
+# Set environment variables in Vercel dashboard
+vercel --prod
+```
+
+**Frontend (GitHub Pages)**:
+1. Push code to GitHub
+2. Enable GitHub Pages in repository settings
+3. Add `NEXT_PUBLIC_API_URL` secret in GitHub Actions
+4. Push to `main` branch (auto-deploys)
 
 ## License
 
