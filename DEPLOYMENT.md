@@ -12,9 +12,11 @@ This guide explains how to deploy the Malicious URL Scanner to GitHub Pages (fro
 
 ### Step 1: Prepare Backend for Vercel
 
-The backend is already configured for Vercel serverless functions. The entry point is at `backend/api/index.ts`.
+The backend is already configured for Vercel serverless functions. The entry point is at `api/index.ts` (root level).
 
 ### Step 2: Deploy to Vercel
+
+**IMPORTANT**: When deploying, make sure the **Root Directory** is set to the project root (`.`), NOT `backend`.
 
 1. **Install Vercel CLI** (if not already installed):
    ```bash
@@ -41,8 +43,14 @@ The backend is already configured for Vercel serverless functions. The entry poi
    - Which scope? (select your account)
    - Link to existing project? **No**
    - Project name? (press Enter for default or enter a name)
-   - Directory? **./backend**
+   - **Directory?** Enter `.` (project root) - **DO NOT use `./backend`**
    - Override settings? **No**
+
+5. **If you already deployed with wrong root directory**:
+   - Go to your project on [vercel.com](https://vercel.com)
+   - Go to **Settings** → **General**
+   - Under **Root Directory**, change it to `.` (project root)
+   - Save and redeploy
 
 5. **Set Environment Variables**:
    ```bash
