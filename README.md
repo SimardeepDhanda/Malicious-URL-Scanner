@@ -113,7 +113,7 @@ Analyzes a URL and returns risk assessment.
     "Verify the sender independently."
   ],
   "model_metadata": {
-    "model": "llama-3.1-70b-versatile",
+    "model": "llama-3.1-8b-instant",
     "latency_ms": 1200
   },
   "timestamp": "2025-11-24T19:05:00Z"
@@ -180,8 +180,10 @@ The system handles various error scenarios:
 ```
 Malicious-URL-Scanner/
 ├── backend/
+│   ├── api/
+│   │   └── index.ts          # Vercel serverless entry point
 │   ├── src/
-│   │   ├── index.ts          # Express server
+│   │   ├── index.ts          # Express server (local dev)
 │   │   ├── types.ts          # TypeScript types
 │   │   └── utils/
 │   │       ├── urlValidator.ts
@@ -197,20 +199,15 @@ Malicious-URL-Scanner/
 │   │   └── globals.css
 │   ├── package.json
 │   └── next.config.js
+├── .github/
+│   └── workflows/
+│       └── deploy-frontend.yml
 ├── .env.example
+├── vercel.json
 ├── .gitignore
-├── package.json
+├── DEPLOYMENT.md
 └── README.md
 ```
-
-## Future Enhancements
-
-- VirusTotal or Google Safe Browsing integration
-- Browser extension with one-click scan
-- User accounts and cloud history
-- Batch scanning from CSV upload
-- Passive DNS and WHOIS lookup
-- Fine-tuned small model for faster analysis
 
 ## Deployment
 
@@ -236,6 +233,15 @@ vercel --prod
 2. Enable GitHub Pages in repository settings
 3. Add `NEXT_PUBLIC_API_URL` secret in GitHub Actions
 4. Push to `main` branch (auto-deploys)
+
+## Future Enhancements
+
+- VirusTotal or Google Safe Browsing integration to cross check
+- Browser extension with one-click scan
+- User accounts and cloud history
+- Batch scanning from uploaded CSV
+- Passive DNS and WHOIS lookup
+- Fine-tuned small model for speed
 
 ## License
 
