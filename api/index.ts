@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
+
+// Import backend utilities
 import { validateAndNormalizeUrl, sanitizeForLogging } from "../backend/src/utils/urlValidator";
 import { analyzeUrl } from "../backend/src/utils/groqClient";
 import { ErrorResponse } from "../backend/src/types";
@@ -147,6 +149,4 @@ app.use((req, res) => {
 });
 
 // Export for Vercel serverless
-// Vercel automatically handles Express apps when exported as default
 export default app;
-
